@@ -1,0 +1,38 @@
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+ul{
+  list-style: none;
+}
+.flex{
+  display: flex;
+}
+.icon{
+  display: flex;
+}
+.Home{
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.items{
+  width: 100%;
+  flex-wrap:wrap;
+  margin: 5vh 0 0 0;
+}
+.itemRow{
+  width: 100%;
+  justify-content: space-around;
+}
+.item{
+  margin-bottom: 3vh;
+}
+.unVisible{
+  visibility: hidden;
+}
+.flexCol{
+  flex-direction: column;
+  align-items: center;
+}
