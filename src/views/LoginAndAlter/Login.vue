@@ -49,7 +49,6 @@
 <script>
 import MobileHeader from "../../components/MobileHeader.vue";
 import { isStdLogin } from "../../network/requestMethods";
-import { isLogin } from "../../network/requestMethods";
 import { isParentLogin } from "../../network/requestMethods";
 
 export default {

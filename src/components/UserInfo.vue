@@ -3,19 +3,18 @@
     class=" UserInfo"
     @click="userNavClick"
   >
-      <div class="showName">
-        Hi , {{userName}}
-      </div>
-      <div
-        v-if="isShow"
-        class="userNav"
-      >
-        <ul>
-          <li @click="alterPwd">修改密码</li>
-          <li @click="toLogin">退出</li>
-        </ul>
-      </div>
-    
+    <div class="showName">
+      Hi , {{userName}}
+    </div>
+    <div
+      v-if="isShow"
+      class="userNav"
+    >
+      <ul>
+        <li @click="alterPwd">修改密码</li>
+        <li @click="toLogin">退出</li>
+      </ul>
+    </div>
 
   </div>
 
@@ -37,11 +36,11 @@ export default {
     },
     toLogin() {
       this.$router.push("/login");
-      this.$store.commit('setName', "")
-      this.$store.commit('setPwd', "")
+      this.$store.commit("setName", "");
+      this.$store.commit("setPwd", "");
       localStorage.clear();
       console.log(this.$store.getters.getUserName);
-      console.log(localStorage.getItem('username'));
+      console.log(localStorage.getItem("username"));
     },
     alterPwd() {
       this.$router.push("/alterpwd");
@@ -49,7 +48,14 @@ export default {
   },
   mounted() {
     if (this.$route.name != "Login") {
-      this.userName = this.$store.getters.getRealName;
+      let checkParUserName = new RegExp(/^p\d{10}$/); //匹配以p开头的十一位数字 家长账号
+      let username = this.$store.getters.getUserName;
+      let realname = this.$store.getters.getRealName;
+      if (checkParUserName.test(username)) {
+        this.userName = realname[0] + "家长";
+      } else {
+        this.userName = realname[0] + "同学";
+      }
     }
   },
   created() {
@@ -66,7 +72,6 @@ export default {
 }
 
 .showName {
-  
   margin: 0 2vh 0 0;
 }
 .userNav {
